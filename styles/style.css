@@ -73,10 +73,8 @@ button {
   position: relative;
   display: inline-block;
   height: 32px;
-  margin: 0;
-  padding: 15px;
-  padding-block: 0;
-  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .currency-radio-label.first {
   border-top-left-radius: 6px;
