@@ -133,9 +133,11 @@ button {
   margin-right: 8px;
 }
 .checked-only-btn {
+  flex-shrink: 0;
+  min-width: max-content;
   opacity: 0;
   border: none;
-  background-color: inherit;
+  background-color: #f1fcff;
   color: #3da4f4;
   font-size: 12px;
   line-height: 16px;
