@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f7fa;
+  color: #656565;
+}
+button {
+  border: none;
+  outline: none;
+}
+.app-header {
+  text-align: center;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.app-main {
+  padding-left: 80px;
+  padding-right: 80px;
+  min-height: calc(100vh - 128px);
+  display: flex;
+}
+.app-sider {
+  display: none;
+  width: 25%;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.card {
+  width: 100%;
+  padding: 24px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+}
+.sider-card {
+  position: sticky;
+  top: 16px;
+}
+.ticket-currency-block {
+  margin-bottom: 24px;
+}
+.text {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.currency-radio-wrapper {
+  display: flex;
+  align-items: center;
+}
+.currency-radio-label {
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  font-size: 14px;
+  line-height: 30px;
+  color: #3da4f4;
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  margin: 0;
+  padding-inline: 15px;
+  padding-block: 0;
+  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+.currency-radio-label.first {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.currency-radio-label.third {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.currency-radio-label:hover {
+  background-color: #f1fcff;
+  border-color: #3da4f4;
+}
+.currency-radio-wrapper .radio-input:checked + .currency-radio-label {
+  background-color: #3da4f4;
+  color: white;
+  border-color: #3da4f4;
+}
+.radio-input {
+  display: none;
+}
+.transfers-checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+.checkbox-list-item {
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+.checkbox-list-item label {
+  cursor: pointer;
+  width: 100%;
+}
+.checkbox-list-item:hover {
+  background-color: #f1fcff;
+}
+.checkbox-list-item:hover .checked-only-btn {
+  opacity: 1;
+}
+.transfers-checkbox-label {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.checkbox-input {
+  margin-right: 8px;
+}
+.checked-only-btn {
+  opacity: 0;
+  border: none;
+  background-color: inherit;
+  color: #3da4f4;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+.checked-only-btn:hover {
+  background-color: white;
+}
+.app-content {
+  display: none;
+  text-align: center;
+  flex-grow: 1;
+}
+.tickets-list-item {
+  list-style: none;
+  margin-bottom: 16px;
+}
+.content-wrapper {
+  display: flex;
+}
+.left-content {
+  min-width: 25%;
+  border-right: 1px solid #d9d9d9;
+  margin-right: 24px;
+  padding-right: 20px;
+}
+.img-wrapper {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 8px;
+}
+.left-content-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.buy-ticket-btn {
+  max-width: 176px;
+  width: 100%;
+  height: 52px;
+  background-color: #ff6d01;
+  opacity: 1;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+.buy-ticket-btn:hover {
+  background-color: #ff8125;
+}
+.right-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+}
+.departure-block {
+  text-align: left;
+  max-width: 176px;
+  width: 100%;
+}
+.time-text,
+.place-text {
+  margin-bottom: 4px;
+}
+.time-text {
+  font-size: 32px;
+  font-weight: 500;
+}
+.date-text {
+  text-transform: capitalize;
+  opacity: 0.6;
+}
+.stops-block {
+  padding-top: 8px;
+  opacity: 0.6;
+}
+.stops-img-wrapper {
+  width: 256px;
+  height: 40px;
+}
+.stops-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.arrival-block {
+  text-align: right;
+  min-width: 176px;
+}
+.small-screen-info {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@media (min-width: 1280px) {
+  .app-sider {
+    display: block;
+  }
+  .app-content {
+    display: block;
+  }
+  .small-screen-info {
+    display: none;
+  }
+}
