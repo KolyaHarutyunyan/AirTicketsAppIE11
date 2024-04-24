@@ -358,7 +358,11 @@ const handleCheckboxChange = (event: Event) => {
   }
   const checkboxes =
     document.querySelectorAll<HTMLInputElement>(".checkbox-input");
-  const checkedCheckboxes = [...checkboxes].filter(
+  const checkboxesArray = [];
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxesArray.push(checkboxes[i]);
+  }
+  const checkedCheckboxes = checkboxesArray.filter(
     (checkbox) => checkbox.checked
   );
   if (checkedCheckboxes.length === 0) {
