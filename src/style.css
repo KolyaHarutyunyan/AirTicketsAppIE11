@@ -109,10 +109,6 @@ button {
   list-style: none;
   cursor: pointer;
 }
-.checkbox-list-item label {
-  cursor: pointer;
-  width: 100%;
-}
 .checkbox-list-item:hover {
   background-color: #f1fcff;
 }
@@ -120,6 +116,7 @@ button {
   opacity: 1;
 }
 .transfers-checkbox-label {
+  cursor: pointer;
   width: 100%;
   cursor: pointer;
   display: flex;
@@ -150,6 +147,7 @@ button {
   display: none;
   text-align: center;
   flex-grow: 1;
+  cursor: default;
 }
 .tickets-list-item {
   list-style: none;
@@ -238,6 +236,9 @@ button {
 .arrival-block {
   text-align: right;
   min-width: 176px;
+}
+.empty-text {
+  opacity: 0.6;
 }
 .small-screen-info {
   display: block;

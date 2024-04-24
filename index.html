@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website</title>
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div id="root">
       <header class="app-header">
         <div class="logo-wrapper">
-          <img src="./assets/images/logo.png" alt="Logo" class="logo" />
+          <img src="/src/assets/images/logo.png" alt="Logo" class="logo" />
         </div>
       </header>
       <main class="app-main">
@@ -48,174 +48,16 @@
             </div>
             <div>
               <p class="text">КОЛИЧЕСТВО ПЕРЕСАДОК</p>
-              <ul class="transfers-checkbox-group">
-                <li class="checkbox-list-item">
-                  <input type="checkbox" id="checkAll" class="checkbox-input" />
-                  <label for="checkAll" class="transfers-checkbox-label"
-                    >Все</label
-                  >
-                </li>
-                <li class="checkbox-list-item">
-                  <div class="transfers-checkbox-label">
-                    <input
-                      type="checkbox"
-                      id="checkbox1"
-                      class="checkbox-input"
-                    />
-                    <label for="checkbox1">Без пересадок</label>
-                  </div>
-                  <button
-                    type="button"
-                    class="checked-only-btn"
-                    data-checkbox="checkbox1"
-                  >
-                    ТОЛЬКО
-                  </button>
-                </li>
-                <li class="checkbox-list-item">
-                  <div class="transfers-checkbox-label">
-                    <input
-                      type="checkbox"
-                      id="checkbox2"
-                      class="checkbox-input"
-                    />
-                    <label for="checkbox2">1 пересадка</label>
-                  </div>
-                  <button
-                    type="button"
-                    class="checked-only-btn"
-                    data-checkbox="checkbox2"
-                  >
-                    ТОЛЬКО
-                  </button>
-                </li>
-                <li class="checkbox-list-item">
-                  <div class="transfers-checkbox-label">
-                    <input
-                      type="checkbox"
-                      id="checkbox3"
-                      class="checkbox-input"
-                    />
-                    <label for="checkbox3">2 пересадки</label>
-                  </div>
-                  <button
-                    type="button"
-                    class="checked-only-btn"
-                    data-checkbox="checkbox3"
-                  >
-                    ТОЛЬКО
-                  </button>
-                </li>
-                <li class="checkbox-list-item">
-                  <div class="transfers-checkbox-label">
-                    <input
-                      type="checkbox"
-                      id="checkbox4"
-                      class="checkbox-input"
-                    />
-                    <label for="checkbox4">3 пересадки</label>
-                  </div>
-                  <button
-                    type="button"
-                    class="checked-only-btn"
-                    data-checkbox="checkbox4"
-                  >
-                    ТОЛЬКО
-                  </button>
-                </li>
-              </ul>
+              <div id="checkbox-container"></div>
             </div>
           </div>
         </div>
-        <div class="app-content">
-          <ul class="tickets-list-group">
-            <li class="tickets-list-item">
-              <div class="card content-card">
-                <div class="content-wrapper">
-                  <div class="left-content">
-                    <div class="img-wrapper">
-                      <img
-                        src="/assets/images/turkish-airlines-old-logo.png"
-                        alt="TurkishAirlines"
-                        class="left-content-img"
-                      />
-                    </div>
-                    <button type="button" class="buy-ticket-btn">
-                      Купить за 7000 ₽
-                    </button>
-                  </div>
-                  <div class="right-content">
-                    <div class="departure-block">
-                      <h2 class="time-text">12:50</h2>
-                      <p class="place-text">LRN, Ларнака</p>
-                      <p class="date-text">5 Дек. 2018, Ср</p>
-                    </div>
-                    <div class="stops-block">
-                      <p>1 пересадка</p>
-                      <div class="stops-img-wrapper">
-                        <img
-                          src="/assets/images/departure-arrival-plane.png"
-                          alt="DepartureArrivalPlane"
-                          class="stops-img"
-                        />
-                      </div>
-                    </div>
-                    <div class="arrival-block">
-                      <h2 class="time-text">14:30</h2>
-                      <p class="place-text">TLV, Тель-Авив</p>
-                      <p class="date-text">5 Дек. 2018, Ср</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="tickets-list-item">
-              <div class="card content-card">
-                <div class="content-wrapper">
-                  <div class="left-content">
-                    <div class="img-wrapper">
-                      <img
-                        src="/assets/images/turkish-airlines-old-logo.png"
-                        alt="TurkishAirlines"
-                        class="left-content-img"
-                      />
-                    </div>
-                    <button type="button" class="buy-ticket-btn">
-                      Купить за 7000 ₽
-                    </button>
-                  </div>
-                  <div class="right-content">
-                    <div class="departure-block">
-                      <h2 class="time-text">12:50</h2>
-                      <p class="place-text">LRN, Ларнака</p>
-                      <p class="date-text">5 Дек. 2018, Ср</p>
-                    </div>
-                    <div class="stops-block">
-                      <p>1 пересадка</p>
-                      <div class="stops-img-wrapper">
-                        <img
-                          src="/assets/images/departure-arrival-plane.png"
-                          alt="DepartureArrivalPlane"
-                          class="stops-img"
-                        />
-                      </div>
-                    </div>
-                    <div class="arrival-block">
-                      <h2 class="time-text">14:30</h2>
-                      <p class="place-text">TLV, Тель-Авив</p>
-                      <p class="date-text">5 Дек. 2018, Ср</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <div id="tickets-container" class="app-content"></div>
         <p class="small-screen-info">
           Сайт оптимизирован для экранов шире 1280 пикселей. Спасибо!
         </p>
       </main>
     </div>
-    <script src="scripts/script.js"></script>
+    <script src="dest/script.js"></script>
   </body>
 </html>
