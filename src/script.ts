@@ -32,7 +32,7 @@ interface ICurrencyRadioElement {
   label: HTMLLabelElement;
 }
 
-const tickets: TTicket[] = [
+var tickets: TTicket[] = [
   {
     origin: "VVO",
     origin_name: "Владивосток",
@@ -191,24 +191,21 @@ const tickets: TTicket[] = [
   },
 ];
 
-const transfersList = [
+var transfersList = [
   ETicketTransfers.NO_TRANSFERS,
   ETicketTransfers.ONE_TRANSFER,
   ETicketTransfers.TWO_TRANSFERS,
   ETicketTransfers.THREE_TRANSFERS,
 ];
 
-let checkedTransfers = [
+var checkedTransfers = [
   ETicketTransfers.NO_TRANSFERS,
   ETicketTransfers.ONE_TRANSFER,
   ETicketTransfers.TWO_TRANSFERS,
 ];
 
-const calculatePriceByCurrency = (
-  price: number,
-  toCurrency: string
-): number => {
-  const exchangeRates: { [key: string]: number } = {
+var calculatePriceByCurrency = (price: number, toCurrency: string): number => {
+  var exchangeRates: { [key: string]: number } = {
     RUB: 1.0,
     USD: 0.011,
     EUR: 0.01,
@@ -221,15 +218,15 @@ const calculatePriceByCurrency = (
   }
 };
 
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = {
+var formatDate = (dateString: string) => {
+  var date = new Date(dateString);
+  var options: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "short",
     year: "numeric",
     weekday: "short",
   };
-  const formattedDate = date
+  var formattedDate = date
     .toLocaleDateString("ru-RU", options)
     .substring(0, 15)
     .split(",")
@@ -238,7 +235,7 @@ const formatDate = (dateString: string) => {
   return formattedDate;
 };
 
-const getSymbolFromCurrency = (currency: ETicketCurrency) => {
+var getSymbolFromCurrency = (currency: ETicketCurrency) => {
   switch (currency) {
     case ETicketCurrency.RUB:
       return "₽";
@@ -251,7 +248,7 @@ const getSymbolFromCurrency = (currency: ETicketCurrency) => {
   }
 };
 
-const makeTransferFromStop = (stop: number): ETicketTransfers => {
+var makeTransferFromStop = (stop: number): ETicketTransfers => {
   switch (stop) {
     case 0:
       return ETicketTransfers.NO_TRANSFERS;
@@ -266,16 +263,16 @@ const makeTransferFromStop = (stop: number): ETicketTransfers => {
   }
 };
 
-const updateTickets = (tickets: TTicket[]): TTicket[] =>
+var updateTickets = (tickets: TTicket[]): TTicket[] =>
   tickets
     .sort((ta, tb) => ta.price - tb.price)
     .filter(
       (t) => checkedTransfers.indexOf(makeTransferFromStop(t.stops)) !== -1
     );
 
-const updateTicketPricesToCurrency = (toCurrency: string): TTicket[] => {
+var updateTicketPricesToCurrency = (toCurrency: string): TTicket[] => {
   return updateTickets(tickets).map((ticket) => {
-    const updatedPrice = calculatePriceByCurrency(ticket.price, toCurrency);
+    var updatedPrice = calculatePriceByCurrency(ticket.price, toCurrency);
     return {
       ...ticket,
       price: updatedPrice,
@@ -284,32 +281,30 @@ const updateTicketPricesToCurrency = (toCurrency: string): TTicket[] => {
   });
 };
 
-const getCurrencyRadioElements = (): ICurrencyRadioElement[] => {
-  const wrapper = document.querySelector(
+var getCurrencyRadioElements = (): ICurrencyRadioElement[] => {
+  var wrapper = document.querySelector(
     ".currency-radio-wrapper"
   ) as HTMLElement;
-  const inputs = wrapper.querySelectorAll<HTMLInputElement>(".radio-input");
-  const labels = wrapper.querySelectorAll<HTMLLabelElement>(
+  var inputs = wrapper.querySelectorAll<HTMLInputElement>(".radio-input");
+  var labels = wrapper.querySelectorAll<HTMLLabelElement>(
     "label.currency-radio-label"
   );
-  const currencyRadioElements: ICurrencyRadioElement[] = [];
+  var currencyRadioElements: ICurrencyRadioElement[] = [];
   inputs.forEach((input, index) => {
     currencyRadioElements.push({ input, label: labels[index] });
   });
   return currencyRadioElements;
 };
 
-const handleRadioButtonChange = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  const updatedTickets = updateTicketPricesToCurrency(
-    target.value.toUpperCase()
-  );
+var handleRadioButtonChange = (event: Event) => {
+  var target = event.target as HTMLInputElement;
+  var updatedTickets = updateTicketPricesToCurrency(target.value.toUpperCase());
   clearTickets();
   renderTickets(updatedTickets);
 };
 
-const addRadioButtonEventListeners = () => {
-  const currencyRadioElements = getCurrencyRadioElements();
+var addRadioButtonEventListeners = () => {
+  var currencyRadioElements = getCurrencyRadioElements();
   currencyRadioElements.forEach((element) => {
     element.input.addEventListener("change", handleRadioButtonChange);
   });
@@ -317,14 +312,14 @@ const addRadioButtonEventListeners = () => {
 
 addRadioButtonEventListeners();
 
-const renderTransfersCheckboxes = () => {
-  let html = `<ul class="transfers-checkbox-group">`;
+var renderTransfersCheckboxes = () => {
+  var html = `<ul class="transfers-checkbox-group">`;
   html += `<li class="checkbox-list-item">
               <input type="checkbox" id="checkAll" class="checkbox-input" />
               <label for="checkAll" class="transfers-checkbox-label">Все</label>
             </li>`;
   transfersList.forEach((transfer) => {
-    const checkboxId = transfer;
+    var checkboxId = transfer;
     html += `<li class="checkbox-list-item">
                 <label for="${checkboxId}" class="transfers-checkbox-label">
                 ${
@@ -341,28 +336,28 @@ const renderTransfersCheckboxes = () => {
   return html;
 };
 
-const handleCheckboxChange = (event: Event) => {
-  const target = event.target as HTMLInputElement;
+var handleCheckboxChange = (event: Event) => {
+  var target = event.target as HTMLInputElement;
   if (target.id !== "checkAll" && !target.checked) {
-    const checkAllCheckbox = document.getElementById(
+    var checkAllCheckbox = document.getElementById(
       "checkAll"
     ) as HTMLInputElement;
     checkAllCheckbox.checked = false;
   }
   if (target.id === "checkAll") {
-    const checkboxes =
+    var checkboxes =
       document.querySelectorAll<HTMLInputElement>(".checkbox-input");
     checkboxes.forEach((checkbox) => {
       checkbox.checked = target.checked;
     });
   }
-  const checkboxes =
+  var checkboxes =
     document.querySelectorAll<HTMLInputElement>(".checkbox-input");
-  const checkboxesArray = [];
-  for (let i = 0; i < checkboxes.length; i++) {
+  var checkboxesArray = [];
+  for (var i = 0; i < checkboxes.length; i++) {
     checkboxesArray.push(checkboxes[i]);
   }
-  const checkedCheckboxes = checkboxesArray.filter(
+  var checkedCheckboxes = checkboxesArray.filter(
     (checkbox) => checkbox.checked
   );
   if (checkedCheckboxes.length === 0) {
@@ -376,11 +371,11 @@ const handleCheckboxChange = (event: Event) => {
   renderTickets(updateTickets(tickets));
 };
 
-const handleButtonClick = (event: Event) => {
-  const target = event.target as HTMLElement;
-  const checkboxId = target.getAttribute("data-checkbox");
-  const checkbox = document.getElementById(checkboxId!) as HTMLInputElement;
-  const checkboxes =
+var handleButtonClick = (event: Event) => {
+  var target = event.target as HTMLElement;
+  var checkboxId = target.getAttribute("data-checkbox");
+  var checkbox = document.getElementById(checkboxId!) as HTMLInputElement;
+  var checkboxes =
     document.querySelectorAll<HTMLInputElement>(".checkbox-input");
   checkboxes.forEach((cb) => {
     cb.checked = false;
@@ -389,24 +384,24 @@ const handleButtonClick = (event: Event) => {
   handleCheckboxChange(event);
 };
 
-const addCheckboxEventListeners = () => {
-  const checkboxes =
+var addCheckboxEventListeners = () => {
+  var checkboxes =
     document.querySelectorAll<HTMLInputElement>(".checkbox-input");
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", handleCheckboxChange);
   });
 };
 
-const addButtonClickEventListeners = () => {
-  const buttons =
+var addButtonClickEventListeners = () => {
+  var buttons =
     document.querySelectorAll<HTMLButtonElement>(".checked-only-btn");
   buttons.forEach((button) => {
     button.addEventListener("click", handleButtonClick);
   });
 };
 
-const renderCheckboxes = () => {
-  const container = document.getElementById("checkbox-container");
+var renderCheckboxes = () => {
+  var container = document.getElementById("checkbox-container");
   if (container) {
     container.innerHTML = renderTransfersCheckboxes();
     addCheckboxEventListeners();
@@ -417,14 +412,14 @@ const renderCheckboxes = () => {
 renderCheckboxes();
 
 function renderTickets(tickets: TTicket[]): void {
-  const ticketsContainer = document.getElementById("tickets-container");
+  var ticketsContainer = document.getElementById("tickets-container");
   if (tickets.length) {
-    const ul = document.createElement("ul");
+    var ul = document.createElement("ul");
     ul.classList.add("tickets-list-group");
     tickets.forEach((ticket) => {
-      const li = document.createElement("li");
+      var li = document.createElement("li");
       li.classList.add("tickets-list-item");
-      const {
+      var {
         departure_time,
         origin,
         origin_name,
@@ -474,7 +469,7 @@ function renderTickets(tickets: TTicket[]): void {
       ticketsContainer.appendChild(ul);
     }
   } else {
-    const p = document.createElement("p");
+    var p = document.createElement("p");
     p.classList.add("empty-text");
     p.innerText = "Билеты не найдены";
     if (ticketsContainer) {
@@ -486,10 +481,10 @@ function renderTickets(tickets: TTicket[]): void {
 renderTickets(updateTickets(tickets));
 
 function clearTickets(): void {
-  const ticketsContainer = document.getElementById("tickets-container");
+  var ticketsContainer = document.getElementById("tickets-container");
   if (ticketsContainer) {
-    const ul = ticketsContainer.querySelector(".tickets-list-group");
-    const p = ticketsContainer.querySelector(".empty-text");
+    var ul = ticketsContainer.querySelector(".tickets-list-group");
+    var p = ticketsContainer.querySelector(".empty-text");
     if (ul) ticketsContainer.removeChild(ul);
     if (p) ticketsContainer.removeChild(p);
   }
