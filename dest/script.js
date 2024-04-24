@@ -240,7 +240,7 @@ const makeTransferFromStop = (stop) => {
 };
 const updateTickets = (tickets) => tickets
     .sort((ta, tb) => ta.price - tb.price)
-    .filter((t) => checkedTransfers.includes(makeTransferFromStop(t.stops)));
+    .filter((t) => checkedTransfers.indexOf(makeTransferFromStop(t.stops)) !== -1);
 const updateTicketPricesToCurrency = (toCurrency) => {
     return updateTickets(tickets).map((ticket) => {
         const updatedPrice = calculatePriceByCurrency(ticket.price, toCurrency);
@@ -280,7 +280,7 @@ const renderTransfersCheckboxes = () => {
         const checkboxId = transfer;
         html += `<li class="checkbox-list-item">
                 <label for="${checkboxId}" class="transfers-checkbox-label">
-                ${checkedTransfers.includes(checkboxId)
+                ${checkedTransfers.indexOf(checkboxId) !== -1
             ? `<input type="checkbox" id="${checkboxId}" class="checkbox-input" checked />`
             : `<input type="checkbox" id="${checkboxId}" class="checkbox-input" />`}
                   ${transfer}
